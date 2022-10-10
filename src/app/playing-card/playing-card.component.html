@@ -1,0 +1,195 @@
+<div class="playing-card" draggable="true">
+    <div class="content" [class.face-down]="!cardInfo.isFaceUp">
+        <div class="front" [ngClass]="cardInfo.suit">
+            <span class="card-label top-label">{{cardInfo.rank}}</span>
+            <div class="card-inner" [ngSwitch]="cardInfo.rank"> 
+                <ng-container *ngSwitchCase="Rank.ACE">
+                    <ng-container *ngTemplateOutlet="ace"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.TWO">
+                    <ng-container *ngTemplateOutlet="two"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.THREE">
+                    <ng-container *ngTemplateOutlet="three"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.FOUR">
+                    <ng-container *ngTemplateOutlet="four"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.FIVE">
+                    <ng-container *ngTemplateOutlet="five"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.SIX">
+                    <ng-container *ngTemplateOutlet="six"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.SEVEN">
+                    <ng-container *ngTemplateOutlet="seven"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.EIGHT">
+                    <ng-container *ngTemplateOutlet="eight"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.NINE">
+                    <ng-container *ngTemplateOutlet="nine"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.TEN">
+                    <ng-container *ngTemplateOutlet="ten"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.JACK">
+                    <ng-container *ngTemplateOutlet="jack"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.QUEEN">
+                    <ng-container *ngTemplateOutlet="queen"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="Rank.KING">
+                    <ng-container *ngTemplateOutlet="king"></ng-container>
+                </ng-container>
+            </div>
+            <span class="card-label bottom-label">{{cardInfo.rank}}</span>
+        </div>
+        <div class="back">
+
+        </div>
+    </div>
+</div>
+
+<!-- Face card templates -->
+<ng-template #jack>
+    <div class="face-card jack"></div>
+</ng-template>
+
+<ng-template #queen>
+    <div class="face-card queen"></div>
+</ng-template>
+
+<ng-template #king>
+    <div class="face-card king"></div>
+</ng-template>
+
+<!-- Number card templates -->
+<ng-template #ace>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>
+
+<ng-template #two>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>
+
+<ng-template #three>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>
+
+<ng-template #four>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>
+
+<ng-template #five>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>
+
+<ng-template #six>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>
+
+<ng-template #seven>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>
+
+<ng-template #eight>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>
+
+<ng-template #nine>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>
+
+<ng-template #ten>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+    <div class="card-col">
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+        <div class="card-symbol"></div>
+    </div>
+</ng-template>

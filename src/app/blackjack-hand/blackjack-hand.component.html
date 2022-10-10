@@ -1,0 +1,7 @@
+<div class="cards">
+    <app-playing-card
+        *ngFor="let card of handInfo.cards; let i = index"
+        [cardInfo]="card"
+        (click)="flipCardN(i)"
+    ></app-playing-card>
+</div>

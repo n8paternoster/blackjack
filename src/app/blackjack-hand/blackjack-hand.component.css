@@ -1,0 +1,7 @@
+.cards {
+    display: flex;
+}
+.cards > :nth-child(n+2) {
+    margin-left: -60px;
+    //margin-top: 3px;
+}
