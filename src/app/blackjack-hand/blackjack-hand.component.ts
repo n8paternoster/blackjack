@@ -10,6 +10,7 @@ import { Hand } from '../models/hand';
 export class BlackjackHandComponent implements OnInit {
 
   @Input() handInfo!: Hand;
+  @Input() tablePosition!: number;
 
   constructor() { }
 

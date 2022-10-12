@@ -1,6 +1,8 @@
-<div>
+<div class="table" [style.--n]="hands.length">
     <app-blackjack-hand
-        *ngFor="let hand of hands"
+        *ngFor="let hand of hands; let i = index"
         [handInfo]="hand"
+        [style.--i]="i"
+        [ngClass]="i == 0 ? 'dealer' : 'player'"
     ></app-blackjack-hand>
 </div>

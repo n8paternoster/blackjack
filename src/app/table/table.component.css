@@ -1,0 +1,26 @@
+.table {
+    --table_width: 600px;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+    background-color: red;
+    justify-content: center;
+
+    height: calc(var(--table_width)/2);
+    width: var(--table_width);
+    border-bottom-left-radius: var(--table_width);
+    border-bottom-right-radius: var(--table_width);
+}
+
+.dealer {
+}
+
+.player {
+    --turn: calc(0.5turn - 0.5turn*(var(--i)/var(--n)));
+    position: absolute;
+    transform:
+        rotate(var(--turn))
+        translate(calc(var(--table_width)/2))
+        rotate(calc(-1*var(--turn)));
+}
+
