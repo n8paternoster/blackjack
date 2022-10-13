@@ -1,7 +1,9 @@
 .playing-card {
+    --cardWidth: 85px;
+    --aspectRatio: 1.46;
     position: relative;
-    width: 100px;
-    height: 146px;
+    width: var(--cardWidth);
+    height: calc(var(--cardWidth)*var(--aspectRatio));
     perspective: 300px;
 }
 
@@ -33,7 +35,7 @@
 }
 
 .front {
-    padding: 5px;
+    display: flex;
     background-color: white;
     z-index: 1; /* allow both front and back to be draggable */
 }
@@ -46,48 +48,16 @@
 }
 
 .card-label {
-    position: absolute;
-    width: 16px;
+    padding-top: 0.25em;
+    padding-left: 0.25em;
+    width: 1em;
     text-align: center;
-    letter-spacing: -2px;
-    line-height: 14px;
+    line-height: 0.9em;
     white-space: pre;
 }
 
-.heart .card-label::after, .heart .card-symbol::before, .heart .card-label {
-    content: '\A♥';
-    color: red;
-}
-.diamond .card-label::after, .diamond .card-symbol::before, .diamond .card-label {
-    content: '\A♦';
-    color: red;
-}
-.spade .card-label::after, .spade .card-symbol::before, .spade .card-label {
-    content: '\A♠';
-    color: black;
-}
-.club .card-label::after, .club .card-symbol::before, .club .card-label {
-    content: '\A♣';
-    color: black;
-}
-
-.top-label {
-    top: 5px;
-    left: 0;
-}
-
-.bottom-label {
-    bottom: 5px;
-    right: 0;
-}
-
 .card-inner {
-    position: absolute;
-    width: 70%;
-    height: 80%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    flex-grow: 1;
     display: flex;
     justify-content: space-around;
     align-items: stretch;
@@ -107,23 +77,41 @@
 }
 
 .face-card {
-    width: 95%;
+    width: 100%;
     height: 100%;
     object-fit: contain;
+    pointer-events: none;
 }
 
-.spade .jack { content: url("../../assets/images/jack-spades.png"); }
-.spade .queen { content: url("../../assets/images/queen-spades.png"); }
-.spade .king { content: url("../../assets/images/king-spades.png"); }
+.heart .card-label::after, .heart .card-symbol::before, .heart .card-label {
+    content: '\A♥';
+    color: red;
+}
+.diamond .card-label::after, .diamond .card-symbol::before, .diamond .card-label {
+    content: '\A♦';
+    color: red;
+}
+.spade .card-label::after, .spade .card-symbol::before, .spade .card-label {
+    content: '\A♠';
+    color: black;
+}
+.club .card-label::after, .club .card-symbol::before, .club .card-label {
+    content: '\A♣';
+    color: black;
+}
 
-.heart .jack { content: url("../../assets/images/jack-hearts.png"); }
-.heart .queen { content: url("../../assets/images/queen-hearts.png"); }
-.heart .king { content: url("../../assets/images/king-hearts.png"); }
+.spade .jack { content: url("../../assets/images/JS.svg"); }
+.spade .queen { content: url("../../assets/images/QS.svg"); }
+.spade .king { content: url("../../assets/images/KS.svg"); }
 
-.diamond .jack { content: url("../../assets/images/jack-diamonds.png"); }
-.diamond .queen { content: url("../../assets/images/queen-diamonds.png"); }
-.diamond .king { content: url("../../assets/images/king-diamonds.png"); }
+.heart .jack { content: url("../../assets/images/JH.svg"); }
+.heart .queen { content: url("../../assets/images/QH.svg"); }
+.heart .king { content: url("../../assets/images/KH.svg"); }
 
-.club .jack { content: url("../../assets/images/jack-clubs.png"); }
-.club .queen { content: url("../../assets/images/queen-clubs.png"); }
-.club .king { content: url("../../assets/images/king-clubs.png"); }
+.diamond .jack { content: url("../../assets/images/JD.svg"); }
+.diamond .queen { content: url("../../assets/images/QD.svg"); }
+.diamond .king { content: url("../../assets/images/KD.svg"); }
+
+.club .jack { content: url("../../assets/images/JC.svg"); }
+.club .queen { content: url("../../assets/images/QC.svg"); }
+.club .king { content: url("../../assets/images/KC.svg"); }

@@ -1,7 +1,7 @@
 <div class="playing-card" draggable="true">
     <div class="content" [class.face-down]="!cardInfo.isFaceUp">
         <div class="front" [ngClass]="cardInfo.suit">
-            <span class="card-label top-label">{{cardInfo.rank}}</span>
+            <div class="card-label top-label">{{cardInfo.rank}}</div>
             <div class="card-inner" [ngSwitch]="cardInfo.rank"> 
                 <ng-container *ngSwitchCase="Rank.ACE">
                     <ng-container *ngTemplateOutlet="ace"></ng-container>
@@ -43,7 +43,7 @@
                     <ng-container *ngTemplateOutlet="king"></ng-container>
                 </ng-container>
             </div>
-            <span class="card-label bottom-label">{{cardInfo.rank}}</span>
+            <div class="card-label bottom-label">{{cardInfo.rank}}</div>
         </div>
         <div class="back">
 
