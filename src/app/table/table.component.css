@@ -1,26 +1,76 @@
-.table {
-    --table_width: 600px;
+.container {
+    --card-height: 126px;
+    --info-height: 50px;
+    --inner-radius: 350px;
+    --outer-radius: calc(var(--inner-radius) + var(--card-height));
+    --container-height: calc(var(--outer-radius) + calc(1.5*var(--info-height)));
     margin: 0 auto;
-    display: flex;
     position: relative;
-    background-color: red;
-    justify-content: center;
-
-    height: calc(var(--table_width)/2);
-    width: var(--table_width);
-    border-bottom-left-radius: var(--table_width);
-    border-bottom-right-radius: var(--table_width);
+    height: var(--container-height);
+    width: calc(2*var(--container-height));
 }
 
-.dealer {
-}
-
-.player {
-    --turn: calc(0.5turn - 0.5turn*(var(--i)/var(--n)));
+.inner, .outer {
     position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
+    height: var(--inner-radius);
+    width: calc(2*var(--inner-radius));
+    border-bottom-left-radius: calc(2*var(--inner-radius));
+    border-bottom-right-radius: calc(2*var(--inner-radius));
+    background-color: red;
+}
+
+.outer {
+    height: var(--outer-radius);
+    width: calc(2*var(--outer-radius));
+    border-bottom-left-radius: calc(2*var(--outer-radius));
+    border-bottom-right-radius: calc(2*var(--outer-radius));
+    background-color: green;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.table-hand {
+    display: flex;
+    position: absolute;
+}
+
+.table-hand > :nth-child(n+2) {
+    margin-left: -60px;
+    margin-top: 3px;
+}
+
+.dealer-hand {
+    transform: translateY(calc(0.25*var(--card-height)));
+}
+
+.player-hand {
+    --turn: calc(0.5turn - 0.5turn*(var(--i)/var(--n)));
     transform:
+        translateY(calc(-0.5*var(--card-height)))
         rotate(var(--turn))
-        translate(calc(var(--table_width)/2))
+        translate(var(--inner-radius))
         rotate(calc(-1*var(--turn)));
 }
 
+.player-info {
+    height: var(--info-height);
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    --turn: calc(0.5turn - 0.5turn*(var(--i)/calc(2*var(--n))));
+    transform: 
+        translateY(calc(0.5*var(--info-height)))
+        rotate(var(--turn))
+        translate(var(--outer-radius))
+        rotate(calc(-1*var(--turn)));
+}

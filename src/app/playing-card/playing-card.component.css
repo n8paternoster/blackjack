@@ -1,9 +1,8 @@
 .playing-card {
-    --cardWidth: 85px;
-    --aspectRatio: 1.46;
+    --aspect-ratio: 0.686;   /* 208/303 */
     position: relative;
-    width: var(--cardWidth);
-    height: calc(var(--cardWidth)*var(--aspectRatio));
+    height: var(--card-height, 100px);
+    width: calc(var(--card-height, 100px)*var(--aspect-ratio));
     perspective: 300px;
 }
 

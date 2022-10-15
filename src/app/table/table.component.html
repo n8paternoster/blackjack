@@ -1,8 +1,28 @@
-<div class="table" [style.--n]="hands.length">
-    <app-blackjack-hand
-        *ngFor="let hand of hands; let i = index"
-        [handInfo]="hand"
-        [style.--i]="i"
-        [ngClass]="i == 0 ? 'dealer' : 'player'"
-    ></app-blackjack-hand>
+<div class="container" [style.--n]="allHands.length+1">
+    <div class="inner">
+        <div class="dealer-hand table-hand">
+            <app-playing-card
+                *ngFor="let card of dealer.cards"
+                [cardInfo]="card"
+                (click)="card.isFaceUp = !card.isFaceUp">
+            </app-playing-card>
+        </div>
+        <div class="player-hand table-hand"
+            *ngFor="let hand of allHands; index as h"
+            [style.--i]="h+1">
+            <app-playing-card
+                *ngFor="let card of hand.cards"
+                [cardInfo]="card"
+                (click)="card.isFaceUp = !card.isFaceUp">
+            </app-playing-card>
+        </div>
+    </div>
+    <div class="outer">
+        <div class="player-info"
+            *ngFor="let player of players; index as p"
+            [style.--i]="playerPosition(p)">
+            <span>{{player.name}}</span>
+            <span>{{player.chips}}</span>
+        </div>
+    </div>
 </div>

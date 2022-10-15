@@ -3,14 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BlackjackHandComponent } from './blackjack-hand/blackjack-hand.component';
 import { PlayingCardComponent } from './playing-card/playing-card.component';
 import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlackjackHandComponent,
     PlayingCardComponent,
     TableComponent,
   ],
