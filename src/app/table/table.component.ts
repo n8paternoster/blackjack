@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Hand } from '../models/hand';
-import { Suit, Rank, Card} from '../models/card';
+import { Card} from '../models/card';
 import { Player } from '../models/player';
+import { DealerService } from '../services/dealer.service';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-table',
@@ -26,67 +28,24 @@ export class TableComponent implements OnInit {
     return startPos+endPos;
   }
   
-  constructor() { }
+  constructor(private dealerService: DealerService, private playerService: PlayerService) { }
+
+  deal(): void {
+    this.dealerService.payout(this.shoe, this.dealer, this.players);
+    this.dealerService.shuffle(this.shoe);
+    this.dealerService.deal(this.shoe, this.dealer, this.players);
+    alert(this.dealerService.resolveDealerHand(this.shoe, this.dealer));
+  }
 
   ngOnInit(): void {
-    let suits = [Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES];
-    let numDecks = 1;
-    this.shoe = [];
-    for (let i = 0; i < numDecks; i++) {
-      for (let j = 0; j < suits.length; j++) {
-        this.shoe.push({suit: suits[j], rank: Rank.ACE, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.TWO, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.THREE, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.FOUR, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.FIVE, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.SIX, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.SEVEN, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.EIGHT, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.NINE, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.TEN, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.JACK, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.QUEEN, isFaceUp: true});
-        this.shoe.push({suit: suits[j], rank: Rank.KING, isFaceUp: true});
-      }
-    }
+    this.shoe = this.dealerService.fillShoe(4);
     this.shoe.forEach((c) => console.log(c));
+    this.dealer = new Hand([], 0);
 
-
-    this.dealer = new Hand([
-      {suit: Suit.SPADES, rank: Rank.NINE, isFaceUp: true},
-      {suit: Suit.HEARTS, rank: Rank.TWO, isFaceUp: true}
-    ], 0);
     this.players = [
-      new Player(
-        "Nate",
-        500,
-        [
-          new Hand([
-            {suit: Suit.CLUBS, rank: Rank.EIGHT, isFaceUp: true},
-            {suit: Suit.DIAMONDS, rank: Rank.KING, isFaceUp: true}], 0)
-        ]),
-      new Player(
-        "Bot1",
-        700,
-        [
-          new Hand([
-            {suit: Suit.SPADES, rank: Rank.TEN, isFaceUp: true},
-            {suit: Suit.SPADES, rank: Rank.JACK, isFaceUp: true}], 0),
-          new Hand([
-            {suit: Suit.CLUBS, rank: Rank.THREE, isFaceUp: true},
-            {suit: Suit.HEARTS, rank: Rank.SIX, isFaceUp: true}], 0)
-        ]),
-      new Player(
-        "Bot2",
-        800,
-        [
-          new Hand([
-            {suit: Suit.HEARTS, rank: Rank.JACK, isFaceUp: true},
-            {suit: Suit.DIAMONDS, rank: Rank.SEVEN, isFaceUp: true}], 0),
-          new Hand([
-            {suit: Suit.CLUBS, rank: Rank.NINE, isFaceUp: true},
-            {suit: Suit.HEARTS, rank: Rank.JACK, isFaceUp: true}], 0)
-        ]),  
+      new Player("Nate", 500, []),
+      new Player("Bot1", 700, []),
+      new Player("Bot2", 800, []),  
     ];
   }
 

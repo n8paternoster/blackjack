@@ -1,5 +1,4 @@
 export enum Suit {  // class names 
-    UNKNOWN = "",
     HEARTS = "heart",
     DIAMONDS = "diamond",
     SPADES = "spade",
@@ -7,7 +6,6 @@ export enum Suit {  // class names
 }
 
 export enum Rank {  // symbols to display
-    UNKNOWN = "",
     ACE = "A",
     TWO = "2",
     THREE = "3",
